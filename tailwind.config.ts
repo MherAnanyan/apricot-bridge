@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: "400px",
+      },
       colors: {
         apricot: {
           DEFAULT: "#E8721A",

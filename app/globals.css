@@ -8,19 +8,49 @@
   --apricot: #E8721A;
   --apricot-light: #F5A65B;
   --apricot-pale: #FDF0E6;
-  --apricot-deep: #C45A0A;
   --earth: #2C1810;
   --earth-mid: #5C3D2E;
   --cream: #FAF5EE;
   --leaf: #3B6B2A;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  /* prevent horizontal overflow on all screens */
+  overflow-x: hidden;
+}
 
 body {
   font-family: 'DM Sans', sans-serif;
   background: var(--cream);
   color: var(--earth);
+  /* prevent content wider than viewport */
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Fix Armenian and long text overflow on mobile */
+p, h1, h2, h3, h4, h5, blockquote, li, a, span, div {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Smoother scroll on mobile */
+@media (max-width: 768px) {
+  html {
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Ensure sections don't overflow */
+  section {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+  /* Armenian font renders better with slightly more line height */
+  :lang(hy) p,
+  :lang(hy) li,
+  :lang(hy) span {
+    line-height: 1.8;
+  }
 }
 
 @layer utilities {
