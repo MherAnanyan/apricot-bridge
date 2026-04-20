@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TrustBar from "@/components/TrustBar";
 import Experiences from "@/components/Experiences";
+import Packages from "@/components/Packages";
 import HowItWorks from "@/components/HowItWorks";
 import ApricotBoxSection from "@/components/ApricotBoxSection";
 import Stories from "@/components/Stories";
@@ -16,6 +17,7 @@ export default function Home() {
       <Hero />
       <TrustBar />
       <Experiences />
+      <Packages />
       <HowItWorks />
       <ApricotBoxSection />
       <Stories />

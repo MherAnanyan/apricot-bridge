@@ -23,7 +23,9 @@ export function LangProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <LangContext.Provider value={{ locale, t: translations[locale], setLocale }}>
+    <LangContext.Provider
+      value={{ locale, t: translations[locale], setLocale }}
+    >
       {children}
     </LangContext.Provider>
   );

@@ -2,10 +2,10 @@
 import { useLang } from "@/lib/LangContext";
 import { Locale } from "@/lib/translations";
 
-const langs: { code: Locale; label: string; flag: string }[] = [
-  { code: "en", label: "EN", flag: "🇺🇸" },
-  { code: "ru", label: "RU", flag: "🇷🇺" },
-  { code: "hy", label: "ՀՅ", flag: "🇦🇲" },
+const langs: { code: Locale; label: string; short: string }[] = [
+  { code: "en", label: "English", short: "EN" },
+  { code: "ru", label: "Русский", short: "RU" },
+  { code: "hy", label: "Հայերեն", short: "ՀՅ" },
 ];
 
 export default function LangSwitcher() {
@@ -13,33 +13,33 @@ export default function LangSwitcher() {
 
   return (
     <div className="flex items-center gap-1 flex-shrink-0">
-      {langs.map((l) => (
-        <button
-          key={l.code}
-          onClick={() => setLocale(l.code)}
-          aria-label={`Switch to ${l.label}`}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 3,
-            padding: "4px 7px",
-            borderRadius: 20,
-            fontSize: 11,
-            fontWeight: 500,
-            background: locale === l.code ? "#E8721A" : "transparent",
-            color: locale === l.code ? "white" : "#5C3D2E",
-            border: locale === l.code ? "none" : "0.5px solid rgba(200,160,120,0.4)",
-            cursor: "pointer",
-            fontFamily: "'DM Sans', sans-serif",
-            whiteSpace: "nowrap",
-            flexShrink: 0,
-          }}
-        >
-          {/* On very small screens show only the flag, label hidden below 400px */}
-          <span style={{ fontSize: 13, lineHeight: 1 }}>{l.flag}</span>
-          <span className="hidden xs:inline sm:inline">{l.label}</span>
-        </button>
-      ))}
+      {langs.map((l) => {
+        const active = locale === l.code;
+        return (
+          <button
+            key={l.code}
+            onClick={() => setLocale(l.code)}
+            aria-label={l.label}
+            style={{
+              padding: "5px 9px",
+              borderRadius: 20,
+              fontSize: 11,
+              fontWeight: 600,
+              letterSpacing: "0.04em",
+              background: active ? "#E8721A" : "transparent",
+              color: active ? "white" : "#5C3D2E",
+              border: active ? "none" : "0.5px solid rgba(200,160,120,0.5)",
+              cursor: "pointer",
+              fontFamily: "'DM Sans', sans-serif",
+              whiteSpace: "nowrap",
+              flexShrink: 0,
+              transition: "all 0.15s",
+            }}
+          >
+            {l.short}
+          </button>
+        );
+      })}
     </div>
   );
 }
